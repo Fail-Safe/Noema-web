@@ -14,17 +14,17 @@ import Layout from '../layouts/Layout.astro';
 
   <main id="top">
     <section class="hero">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="/brand/noema-dark.svg" />
-        <img src="/brand/noema-dark.svg" alt="Noema." width="2314" height="522" />
-      </picture>
+      <img src="/brand/noema-dark.svg" alt="Noema." width="2314" height="522" />
       <p class="tagline">The intentional memory layer for your AI agents.</p>
-      <a
-        href="https://github.com/Fail-Safe/Noema"
-        class="cta"
-        target="_blank"
-        rel="noopener noreferrer"
-      >View on GitHub</a>
+      <div class="hero-actions">
+        <a
+          href="https://github.com/Fail-Safe/Noema"
+          class="cta"
+          target="_blank"
+          rel="noopener noreferrer"
+        >View on GitHub</a>
+        <a href="#install" class="cta-text">Get started ↓</a>
+      </div>
     </section>
 
     <div class="content">
@@ -35,6 +35,24 @@ import Layout from '../layouts/Layout.astro';
           markdown file. The index is a local SQLite database. Nothing lives in the cloud; nothing
           requires an API key.
         </p>
+      </section>
+
+      <section class="prose">
+        <h2>Why Noema?</h2>
+        <ul class="why-list">
+          <li>
+            <strong>Local-first.</strong>
+            No cloud, no API keys, no account required. Your memories live in <code>~/.noema/</code>.
+          </li>
+          <li>
+            <strong>Plain markdown.</strong>
+            Every Trace is a file. You can <code>cat</code>, <code>grep</code>, and <code>git commit</code> it — no proprietary format.
+          </li>
+          <li>
+            <strong>MCP-native.</strong>
+            Works with Claude Code, Copilot, Zed, and any MCP-compatible agent out of the box.
+          </li>
+        </ul>
       </section>
 
       <section class="prose">
@@ -54,25 +72,15 @@ import Layout from '../layouts/Layout.astro';
             </tr>
           </tbody>
         </table>
-        <p>A Trace has a <em>type</em> that describes its intent:</p>
-        <table>
-          <thead>
-            <tr><th>Type</th><th>Meaning</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>fact</td><td>A discrete thing that is true</td></tr>
-            <tr><td>decision</td><td>A choice made and why</td></tr>
-            <tr><td>preference</td><td>A behavioral or stylistic lean</td></tr>
-            <tr><td>context</td><td>Situational background</td></tr>
-            <tr><td>skill</td><td>A learned capability or procedure</td></tr>
-            <tr><td>intent</td><td>Something that needs to happen</td></tr>
-            <tr><td>observation</td><td>Something witnessed but not yet verified</td></tr>
-            <tr><td>note</td><td>Anything else</td></tr>
-          </tbody>
-        </table>
+        <p>
+          Every Trace has a type that describes its intent —
+          <code>fact</code>, <code>decision</code>, <code>preference</code>,
+          <code>context</code>, <code>skill</code>, <code>intent</code>,
+          <code>observation</code>, or <code>note</code>.
+        </p>
       </section>
 
-      <section class="prose">
+      <section class="prose" id="install">
         <h2>Get started</h2>
         <p>Requires Go 1.21+.</p>
         <pre><code><span class="prompt">$ </span>go install github.com/Fail-Safe/Noema/cmd/noema@latest
