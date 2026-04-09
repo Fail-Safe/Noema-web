@@ -33,7 +33,7 @@ import Layout from '../layouts/Layout.astro';
           Noema gives AI agents — and the humans working alongside them — a persistent, structured
           place to record what they know, decide, observe, and intend. Every memory is a plain
           markdown file. The index is a local SQLite database. Nothing lives in the cloud; nothing
-          requires an API key.
+          requires a paid cloud API key.
         </p>
       </section>
 
@@ -58,7 +58,7 @@ import Layout from '../layouts/Layout.astro';
           </li>
           <li>
             <strong>Security from day one.</strong>
-            Keyed MCP auth, mandatory TLS for network mode, explicit host-binding rules, and out-of-band key verification — the security work most projects defer to v2 is in v1.
+            Keyed MCP auth that refuses to serve bearer keys over plaintext, explicit host-binding rules, and out-of-band key verification — the security work most projects defer to v2 is in v1.
           </li>
         </ul>
       </section>
@@ -111,16 +111,21 @@ import Layout from '../layouts/Layout.astro';
         <h2>Security</h2>
         <p>
           A federated ring of memories is worth defending. Noema's HTTP MCP endpoint
-          ships with a <strong>keyed mode</strong> that's mandatory for any non-loopback
-          deployment — every request must carry a bearer key, and the server refuses
-          to start without TLS. Rings share one key, verifiable via a fingerprint
-          command so every peer knows it's talking to the right ring.
+          supports a <strong>keyed mode</strong> where every request must carry a
+          bearer key — and when keyed mode is active, the server refuses to start
+          without TLS. A bearer token over plaintext is worse than no auth at all;
+          Noema treats that combination as a hard startup error, not a warning.
         </p>
         <p>
-          Host binding requires an explicit address; binding to <code>0.0.0.0</code>
-          is rejected outright, so a federation peer can't be accidentally exposed.
-          Keys live in environment variables or <code>0600</code> sidecar files, never
-          in command-line history.
+          Rings share one key, verifiable via a fingerprint command so every peer
+          knows it's talking to the right ring. Keys live in environment variables
+          or <code>0600</code> sidecar files, never in command-line history.
+        </p>
+        <p>
+          The HTTP transport demands an explicit host — binding to <code>0.0.0.0</code>
+          is rejected outright, so a federation peer can't be accidentally exposed
+          to every interface on the machine. The cortex must be named explicitly
+          too; no silent defaults on a network-facing endpoint.
         </p>
         <p>
           The work many projects push to v2 — auth middleware, host-binding safety,
@@ -130,7 +135,7 @@ import Layout from '../layouts/Layout.astro';
 
       <section class="prose" id="install">
         <h2>Get started</h2>
-        <p>Requires Go 1.21+.</p>
+        <p>Requires Go 1.25+.</p>
         <pre><code><span class="prompt">$ </span>go install github.com/Fail-Safe/Noema/cmd/noema@latest
 <span class="prompt">$ </span>noema init --name my-cortex
 <span class="prompt">$ </span>noema serve --transport stdio</code></pre>
