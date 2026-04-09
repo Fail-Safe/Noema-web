@@ -135,17 +135,52 @@ import Layout from '../layouts/Layout.astro';
 
       <section class="prose" id="install">
         <h2>Get started</h2>
-        <p>Requires Go 1.25+.</p>
-        <pre><code><span class="prompt">$ </span>go install github.com/Fail-Safe/Noema/cmd/noema@latest
-<span class="prompt">$ </span>noema init --name my-cortex
+        <p>Install with Homebrew (macOS + Linux):</p>
+        <div class="code-block">
+          <pre><code>brew install Fail-Safe/noema/noema</code></pre>
+          <button
+            class="copy-btn"
+            type="button"
+            data-copy="brew install Fail-Safe/noema/noema"
+            aria-label="Copy install command"
+          >Copy</button>
+        </div>
+        <p>Then create a Cortex and start the MCP server:</p>
+        <pre><code><span class="prompt">$ </span>noema init --name my-cortex
 <span class="prompt">$ </span>noema serve --transport stdio</code></pre>
         <p>
-          For full setup, federation, and MCP configuration see the
-          <a href="https://github.com/Fail-Safe/Noema" target="_blank" rel="noopener noreferrer">README</a>.
+          Prefer a pre-built binary, the Go toolchain, or building from source?
+          See the
+          <a href="https://github.com/Fail-Safe/Noema#installation" target="_blank" rel="noopener noreferrer">README — Installation</a>.
         </p>
       </section>
     </div>
   </main>
+
+  <script is:inline>
+    // Vanilla copy-to-clipboard — no dependencies. Buttons with a
+    // data-copy attribute copy their payload to the clipboard and flip
+    // their label to "Copied" for ~1.8s. Silent fallback if the
+    // Clipboard API is unavailable (older browsers, insecure context).
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const payload = btn.getAttribute('data-copy');
+        if (!payload || !navigator.clipboard) return;
+        try {
+          await navigator.clipboard.writeText(payload);
+          const original = btn.textContent;
+          btn.textContent = 'Copied';
+          btn.classList.add('is-copied');
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.classList.remove('is-copied');
+          }, 1800);
+        } catch (_) {
+          // Clipboard write denied (e.g. permissions) — no-op.
+        }
+      });
+    });
+  </script>
 
   <footer>
     <a href="https://github.com/Fail-Safe/Noema" target="_blank" rel="noopener noreferrer">GitHub</a>

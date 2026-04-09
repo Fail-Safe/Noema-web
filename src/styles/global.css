@@ -239,6 +239,45 @@ pre code {
   user-select: none;
 }
 
+/* Copyable code block — wraps <pre> and anchors a text-only "Copy"
+   button in the top-right corner. The button sits inside the pre's
+   padding rather than outside so the control reads as part of the
+   block, not a separate widget. */
+.code-block {
+  position: relative;
+}
+
+.code-block pre {
+  padding-right: 4.5rem; /* reserve room for the button */
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--fg-dim);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+
+.copy-btn:hover {
+  color: var(--fg);
+  border-color: var(--fg-dim);
+}
+
+.copy-btn.is-copied {
+  color: var(--fg);
+  border-color: var(--fg-dim);
+}
+
 /* Footer */
 footer {
   border-top: 1px solid var(--border);
