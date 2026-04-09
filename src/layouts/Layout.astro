@@ -25,7 +25,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Noema" />
+    <meta property="og:image" content={new URL('/brand/noema-social-dark.png', Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL('/brand/noema-social-dark.png', Astro.site)} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Noema",
+      "description": description,
+      "url": "https://noemacortex.com",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Linux, Windows",
+      "license": "https://opensource.org/licenses/MIT",
+      "codeRepository": "https://github.com/Fail-Safe/Noema",
+      "programmingLanguage": "Go",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    })} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
