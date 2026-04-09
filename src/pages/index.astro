@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+  <nav>
+    <a href="#top" class="nav-wordmark">Noema<span class="period">.</span></a>
+    <a
+      href="https://github.com/Fail-Safe/Noema"
+      class="github-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >GitHub ↗</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="/brand/noema-light.svg" />
+        <img src="/brand/noema-dark.svg" alt="Noema." width="2314" height="522" />
+      </picture>
+      <p class="tagline">The intentional memory layer for your AI agents.</p>
+      <a
+        href="https://github.com/Fail-Safe/Noema"
+        class="cta"
+        target="_blank"
+        rel="noopener noreferrer"
+      >View on GitHub</a>
+    </section>
+
+    <div class="content">
+      <section class="prose">
+        <p>
+          Noema gives AI agents — and the humans working alongside them — a persistent, structured
+          place to record what they know, decide, observe, and intend. Every memory is a plain
+          markdown file. The index is a local SQLite database. Nothing lives in the cloud; nothing
+          requires an API key.
+        </p>
+      </section>
+
+      <section class="prose">
+        <h2>Concepts</h2>
+        <table>
+          <thead>
+            <tr><th>Term</th><th>Meaning</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Trace</td>
+              <td>A single memory — one markdown file + its database row</td>
+            </tr>
+            <tr>
+              <td>Cortex</td>
+              <td>A named collection of Traces, stored in a directory you control</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>A Trace has a <em>type</em> that describes its intent:</p>
+        <table>
+          <thead>
+            <tr><th>Type</th><th>Meaning</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>fact</td><td>A discrete thing that is true</td></tr>
+            <tr><td>decision</td><td>A choice made and why</td></tr>
+            <tr><td>preference</td><td>A behavioral or stylistic lean</td></tr>
+            <tr><td>context</td><td>Situational background</td></tr>
+            <tr><td>skill</td><td>A learned capability or procedure</td></tr>
+            <tr><td>intent</td><td>Something that needs to happen</td></tr>
+            <tr><td>observation</td><td>Something witnessed but not yet verified</td></tr>
+            <tr><td>note</td><td>Anything else</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="prose">
+        <h2>Get started</h2>
+        <p>Requires Go 1.21+.</p>
+        <pre><code><span class="prompt">$ </span>go install github.com/Fail-Safe/Noema/cmd/noema@latest
+<span class="prompt">$ </span>noema init --name my-cortex
+<span class="prompt">$ </span>noema serve --transport stdio</code></pre>
+        <p>
+          For full setup, federation, and MCP configuration see the
+          <a href="https://github.com/Fail-Safe/Noema" target="_blank" rel="noopener noreferrer">README</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <a href="https://github.com/Fail-Safe/Noema" target="_blank" rel="noopener noreferrer">GitHub</a>
+    &nbsp;·&nbsp; MIT License
+  </footer>
+</Layout>
