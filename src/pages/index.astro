@@ -41,6 +41,10 @@ import Layout from '../layouts/Layout.astro';
         <h2>Why Noema?</h2>
         <ul class="why-list">
           <li>
+            <strong>Federated by design.</strong>
+            Multiple Cortexes can pair into a ring and sync peer-to-peer. Grow a shared memory across a team, a lab, or a research network — no central server, no gatekeeper.
+          </li>
+          <li>
             <strong>Local-first.</strong>
             No cloud, no API keys, no account required. Your memories live in <code>~/.noema/</code>.
           </li>
@@ -77,6 +81,25 @@ import Layout from '../layouts/Layout.astro';
           <code>fact</code>, <code>decision</code>, <code>preference</code>,
           <code>context</code>, <code>skill</code>, <code>intent</code>,
           <code>observation</code>, or <code>note</code>.
+        </p>
+      </section>
+
+      <section class="prose">
+        <h2>Federation</h2>
+        <p>
+          Two or more Cortexes can pair into a ring and sync peer-to-peer. Every Trace,
+          every lineage edge, every audit event replicates across every peer — no central
+          server, no cloud broker.
+        </p>
+        <p>
+          When two peers edit the same Trace concurrently, Noema refuses to overwrite
+          either side. Instead it creates a <code>divergence</code> Trace that preserves
+          both versions verbatim, so you can resolve it deliberately when you're ready.
+          Nothing is ever lost; nothing is ever silently decided for you.
+        </p>
+        <p>
+          A personal cortex becomes a lab cortex becomes a research-network cortex.
+          Memory grows with the collective, on your terms.
         </p>
       </section>
 
