@@ -56,6 +56,10 @@ import Layout from '../layouts/Layout.astro';
             <strong>MCP-native.</strong>
             Works with Claude Code, Copilot, Zed, and any MCP-compatible agent out of the box.
           </li>
+          <li>
+            <strong>Security from day one.</strong>
+            Keyed MCP auth, mandatory TLS for network mode, explicit host-binding rules, and out-of-band key verification — the security work most projects defer to v2 is in v1.
+          </li>
         </ul>
       </section>
 
@@ -100,6 +104,27 @@ import Layout from '../layouts/Layout.astro';
         <p>
           A personal cortex becomes a lab cortex becomes a research-network cortex.
           Memory grows with the collective, on your terms.
+        </p>
+      </section>
+
+      <section class="prose">
+        <h2>Security</h2>
+        <p>
+          A federated ring of memories is worth defending. Noema's HTTP MCP endpoint
+          ships with a <strong>keyed mode</strong> that's mandatory for any non-loopback
+          deployment — every request must carry a bearer key, and the server refuses
+          to start without TLS. Rings share one key, verifiable via a fingerprint
+          command so every peer knows it's talking to the right ring.
+        </p>
+        <p>
+          Host binding requires an explicit address; binding to <code>0.0.0.0</code>
+          is rejected outright, so a federation peer can't be accidentally exposed.
+          Keys live in environment variables or <code>0600</code> sidecar files, never
+          in command-line history.
+        </p>
+        <p>
+          The work many projects push to v2 — auth middleware, host-binding safety,
+          fingerprint verification, divergence-aware conflict resolution — is in v1.
         </p>
       </section>
 
