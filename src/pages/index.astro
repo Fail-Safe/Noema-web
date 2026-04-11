@@ -42,7 +42,7 @@ import Layout from '../layouts/Layout.astro';
         <ul class="why-list">
           <li>
             <strong>Federated by design.</strong>
-            Multiple Cortexes can pair into a ring and sync peer-to-peer. Grow a shared memory across a team, a lab, or a research network — no central server, no gatekeeper.
+            Multiple Cortexes can pair into a ring and sync peer-to-peer. Publishers can broadcast read-only knowledge; subscribers can consume without polluting upstream. Grow a shared memory across a team, a lab, or a research network — no central server, no gatekeeper.
           </li>
           <li>
             <strong>Local-first.</strong>
@@ -55,6 +55,10 @@ import Layout from '../layouts/Layout.astro';
           <li>
             <strong>MCP-native.</strong>
             Works with Claude Code, Copilot, Zed, and any MCP-compatible agent out of the box.
+          </li>
+          <li>
+            <strong>Integrity built in.</strong>
+            Every Trace is content-hashed on write. Publishers can source-lock authoritative traces so consumers can't accidentally edit them. <code>noema verify</code> catches tampering; <code>noema drift</code> catches divergence from the source.
           </li>
           <li>
             <strong>Security from day one.</strong>
@@ -100,6 +104,14 @@ import Layout from '../layouts/Layout.astro';
           either side. Instead it creates a <code>divergence</code> Trace that preserves
           both versions verbatim, so you can resolve it deliberately when you're ready.
           Nothing is ever lost; nothing is ever silently decided for you.
+        </p>
+        <p>
+          Federation supports three modes: <strong>sync</strong> for collaborative rings,
+          <strong>publish</strong> for read-only knowledge broadcast, and
+          <strong>subscribe</strong> for consumption without upstream pollution.
+          Source-locked traces from a publisher are enforced as immutable on the
+          consumer side — the content can't be edited, only archived or resolved
+          through the publisher.
         </p>
         <p>
           A personal cortex becomes a lab cortex becomes a research-network cortex.
