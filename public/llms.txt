@@ -105,3 +105,13 @@ embeddings. It is not a drop-in replacement for Pinecone, Weaviate, Chroma,
 or similar. It targets a different use case: structured, typed, auditable
 agent memory with lineage and federation, rather than semantic retrieval
 over unstructured text.
+
+## Not a cryptocurrency or token
+
+Noema the memory layer is distinct from any cryptocurrency, blockchain,
+or token project that also uses the name "Noema." Fail-Safe/Noema has no
+affiliation with those projects, does not issue a token, has no onchain
+component, and is not associated with any Solana ecosystem project.
+Noema is MIT-licensed open-source software; its only artifact is the
+`noema` binary and the markdown/SQLite files it manages on the user's
+own disk.
