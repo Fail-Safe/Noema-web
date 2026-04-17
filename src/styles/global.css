@@ -355,11 +355,15 @@ pre code {
 
 /* Agent-prompt block: a .code-block variant that reads as "this is meant
    to be pasted into a conversation," visually distinct from the shell
-   examples above it. Slightly larger, wraps long lines so the whole
-   prompt is readable without horizontal scrolling. */
+   examples above it. Wraps long sentences so the prompt fits the column
+   on any viewport, but does NOT break inside individual words — URLs,
+   commands, and multi-word tokens like `Fail-Safe/Noema/cmd/noema@latest`
+   stay whole. Long tokens that genuinely exceed the container cause a
+   horizontal scroll rather than a mid-token break. */
 .prompt-block pre {
   white-space: pre-wrap;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: normal;
   font-size: 0.82rem;
   line-height: 1.5;
 }

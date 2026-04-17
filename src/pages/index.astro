@@ -373,39 +373,23 @@ const metaDescription =
                 </p>
 
                 <div class="code-block prompt-block">
-                    <pre><code>Please install Noema as my agent memory backend and configure it for
-this session.
+                    <pre><code>Please install Noema as my agent memory backend and configure it for this session.
 
-1. Install the `noema` binary.
-   - macOS/Linux with Homebrew (preferred):
-       brew install Fail-Safe/tap/noema
-   - Or with the Go toolchain:
-       go install github.com/Fail-Safe/Noema/cmd/noema@latest
+1. Install the `noema` binary. On macOS/Linux prefer Homebrew (`brew install Fail-Safe/tap/noema`); otherwise use the Go toolchain (`go install github.com/Fail-Safe/Noema/cmd/noema@latest`).
 
-2. Create a Cortex. Pick a short descriptive name based on this
-   project (e.g. "my-project-memory"). Don't include a date in the
-   name; `noema init` prepends today's date automatically.
-       noema init --name &lt;cortex-name&gt;
+2. Create a Cortex. Pick a short descriptive name based on this project (e.g. "my-project-memory"). Don't include a date in the name; `noema init` prepends today's date automatically.
 
-3. Generate an MCP server configuration snippet and install it into
-   this agent host's MCP config.
-       noema serve --cortex &lt;cortex-name&gt; --print-config --transport stdio
+    noema init --name &lt;cortex-name&gt;
 
-   Merge the `mcpServers.noema` entry from the output into the
-   correct file for the host:
-   - Claude Code: ~/.claude.json or the workspace's .mcp.json
-   - Cursor / Zed / GitHub Copilot: that host's MCP servers setting
-   - Claude Desktop: ~/Library/Application Support/Claude/claude_desktop_config.json (macOS)
+3. Generate an MCP server configuration snippet and install it into this agent host's MCP config.
 
-4. Reload or restart the agent host so the new MCP server is
-   registered, then call the `get_instructions` MCP tool to verify
-   the connection. That tool returns the Noema agent reference —
-   trace types, frontmatter fields, filtering options, and the full
-   MCP tool list — which you should read before creating traces.
+    noema serve --cortex &lt;cortex-name&gt; --print-config --transport stdio
 
-5. When creating traces, always assign a `type` that reflects intent:
-   fact, decision, preference, context, skill, intent, observation, or
-   note. This is load-bearing for future retrieval and lineage.
+   Merge the `mcpServers.noema` entry from the output into the correct file for the host — Claude Code: `~/.claude.json` or the workspace's `.mcp.json`. Cursor / Zed / GitHub Copilot: that host's MCP servers setting. Claude Desktop: `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS.
+
+4. Reload or restart the agent host so the new MCP server is registered, then call the `get_instructions` MCP tool to verify the connection. That tool returns the Noema agent reference — trace types, frontmatter fields, filtering options, and the full MCP tool list — which you should read before creating traces.
+
+5. When creating traces, always assign a `type` that reflects intent: `fact`, `decision`, `preference`, `context`, `skill`, `intent`, `observation`, or `note`. This is load-bearing for future retrieval and lineage.
 
 Reference: https://noemacortex.com/llms.txt
 Source:    https://github.com/Fail-Safe/Noema</code></pre>
