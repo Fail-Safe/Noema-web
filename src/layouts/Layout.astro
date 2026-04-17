@@ -1,5 +1,15 @@
 ---
 import '../styles/global.css';
+// Self-hosted fonts via @fontsource — same Google Fonts, shipped as
+// woff2 files bundled by Vite. Avoids the extra DNS + CDN hop to
+// fonts.googleapis.com and removes a third-party tracking surface.
+// Only the weights we actually use are imported (Inter 400/500,
+// EB Garamond 400 roman + italic, JetBrains Mono 400).
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/400-italic.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/jetbrains-mono/400.css';
 
 interface Props {
   title?: string;
@@ -143,12 +153,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       ]
     })} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@400;500&family=JetBrains+Mono&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <slot />

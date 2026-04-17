@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
+    "@fontsource/eb-garamond": "^5.2.7",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
     "astro": "^6.1.5"
   }
 }

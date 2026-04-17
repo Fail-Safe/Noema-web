@@ -171,6 +171,58 @@ a {
   text-underline-offset: 3px;
 }
 
+/* FAQ — native <details>/<summary>, collapsed by default. Matches the
+   site's existing border-divider rhythm: each question's summary sits
+   on a top border, clicking the summary unfurls the answer below. */
+.faq {
+  border-top: 1px solid var(--border);
+  padding: 1rem 0;
+}
+
+.faq:last-of-type {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq summary {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: var(--fg);
+  list-style: none;               /* hide default marker on most browsers */
+  padding-right: 1.5rem;
+  position: relative;
+}
+
+.faq summary::-webkit-details-marker { display: none; } /* Safari/Chrome */
+
+/* Custom unicode arrow marker that rotates when opened. Keeps the
+   typographic discipline of the rest of the page — no icon font, no
+   JS, no external glyph. */
+.faq summary::after {
+  content: '›';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  color: var(--fg-dim);
+  transition: transform 0.15s ease;
+}
+
+.faq[open] summary::after {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.faq[open] summary {
+  margin-bottom: 0.75rem;
+}
+
+.faq p {
+  color: var(--fg-dim);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
 /* Why list */
 .why-list {
   list-style: none;
