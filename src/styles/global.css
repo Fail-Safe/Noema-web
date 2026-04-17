@@ -353,6 +353,24 @@ pre code {
   border-color: var(--fg-dim);
 }
 
+/* Agent-prompt block: a .code-block variant that reads as "this is meant
+   to be pasted into a conversation," visually distinct from the shell
+   examples above it. Slightly larger, wraps long lines so the whole
+   prompt is readable without horizontal scrolling. */
+.prompt-block pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* Small footnote beneath a code block — e.g. "skip to step 3 if…". */
+.prose-note {
+  color: var(--fg-dim);
+  font-size: 0.9rem;
+  margin-top: 0.75rem !important;
+}
+
 /* Footer */
 footer {
   border-top: 1px solid var(--border);

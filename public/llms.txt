@@ -60,11 +60,35 @@ of the same name, though it borrows the term deliberately.
 ## Project links
 
 - Website: https://noemacortex.com
+- Agent setup guide: https://noemacortex.com/#agent-setup — step-by-step
+  install + MCP-host configuration instructions written for coding agents
+  (Claude Code, Cursor, Copilot, Zed, Aider, etc.) to follow directly
 - Source: https://github.com/Fail-Safe/Noema
 - Hermes plugin: https://github.com/Fail-Safe/Noema/tree/main/plugins/hermes
 - License: MIT
 - Installation: `brew install Fail-Safe/tap/noema` (macOS/Linux), or
   pre-built binaries for darwin/linux/windows on amd64/arm64.
+
+## Agent setup (condensed)
+
+If you are an AI agent asked to install Noema, follow these five steps:
+
+1. Install the binary — `brew install Fail-Safe/tap/noema` on macOS/Linux,
+   or `go install github.com/Fail-Safe/Noema/cmd/noema@latest` with the Go
+   toolchain.
+2. Create a Cortex — `noema init --name <cortex-name>`. Pick a short
+   descriptive name; do not include a date (the tool prepends it).
+3. Get the MCP config — `noema serve --cortex <cortex-name> --print-config
+   --transport stdio` prints a ready-to-paste `mcpServers.noema` entry.
+   Merge it into the correct file for the host (Claude Code: `~/.claude.json`
+   or workspace `.mcp.json`; Cursor/Zed/Copilot: host MCP settings;
+   Claude Desktop: `claude_desktop_config.json`).
+4. Reload the host, then call the `get_instructions` MCP tool to verify
+   connection and retrieve the full agent reference (trace types,
+   frontmatter fields, tool list).
+5. Always assign a `type` to new traces — one of fact, decision,
+   preference, context, skill, intent, observation, note. Required for
+   correct retrieval and lineage.
 
 ## Not cloud
 

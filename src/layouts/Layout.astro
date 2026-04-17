@@ -97,6 +97,55 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           "inLanguage": "en"
         },
         {
+          "@type": "HowTo",
+          "@id": "https://noemacortex.com/#howto-agent-setup",
+          "name": "Install and configure Noema as an AI agent memory backend",
+          "description": "Step-by-step instructions for a coding agent (Claude Code, Cursor, Copilot, Zed, Aider, etc.) to install the Noema binary, create a Cortex, register an MCP server configuration with the agent host, and verify the connection via the get_instructions tool.",
+          "totalTime": "PT5M",
+          "supply": [
+            { "@type": "HowToSupply", "name": "An MCP-capable agent host (Claude Code, Cursor, Copilot, Zed, Aider, Claude Desktop, or similar)" },
+            { "@type": "HowToSupply", "name": "macOS, Linux, or Windows on amd64 or arm64" }
+          ],
+          "tool": [
+            { "@type": "HowToTool", "name": "Homebrew (preferred on macOS/Linux)" },
+            { "@type": "HowToTool", "name": "Go toolchain (fallback)" }
+          ],
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "Install the noema binary",
+              "text": "On macOS or Linux with Homebrew: `brew install Fail-Safe/tap/noema`. Alternatively with the Go toolchain: `go install github.com/Fail-Safe/Noema/cmd/noema@latest`. Pre-built binaries for darwin/linux/windows on amd64/arm64 are also available on the GitHub releases page.",
+              "url": "https://noemacortex.com/#install"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 2,
+              "name": "Create a Cortex",
+              "text": "Run `noema init --name <cortex-name>` with a short descriptive name. Do not include a date in the name; `noema init` prepends the current date automatically.",
+              "url": "https://github.com/Fail-Safe/Noema#quick-start"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 3,
+              "name": "Register the MCP server with the agent host",
+              "text": "Run `noema serve --cortex <cortex-name> --print-config --transport stdio` and merge the `mcpServers.noema` entry from the output into the correct MCP config file for the agent host — Claude Code's `~/.claude.json` or workspace `.mcp.json`, Cursor/Zed/Copilot's MCP servers setting, or Claude Desktop's `claude_desktop_config.json`."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 4,
+              "name": "Verify the connection",
+              "text": "Reload or restart the agent host, then call the `get_instructions` MCP tool. It returns the Noema agent reference — trace types, frontmatter fields, filtering options, and the full tool list — which should be consulted before creating traces."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 5,
+              "name": "Assign types when creating traces",
+              "text": "Every Trace has exactly one `type` that reflects its intent: fact, decision, preference, context, skill, intent, observation, or note. Choosing the right type at creation time is load-bearing for future retrieval and lineage."
+            }
+          ]
+        },
+        {
           "@type": "FAQPage",
           "@id": "https://noemacortex.com/#faq",
           "mainEntity": [

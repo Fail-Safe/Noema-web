@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 // Page-specific meta description — keyword-loaded for search ranking
 // without affecting visible prose. Hits the terms people actually type
@@ -7,287 +7,461 @@ import Layout from '../layouts/Layout.astro';
 // Code / Copilot memory", "local-first", "alternative to vector
 // database", "markdown + SQLite". Stays under 160 chars for Google's
 // snippet display.
-const metaDescription = 'Local-first agent memory as an MCP server. Markdown + SQLite, no cloud, no vector DB. Works with Claude Code, Copilot, Zed, Cursor, Aider, Hermes.';
+const metaDescription =
+    "Local-first agent memory as an MCP server. Markdown + SQLite, no cloud, no vector DB. Works with Claude Code, Copilot, Zed, Cursor, Aider, Hermes.";
 ---
+
 <Layout description={metaDescription}>
-  <nav>
-    <a href="#top" class="nav-wordmark">Noema<span class="period">.</span></a>
-    <a
-      href="https://github.com/Fail-Safe/Noema"
-      class="github-link"
-      target="_blank"
-      rel="noopener noreferrer"
-    >GitHub ↗</a>
-  </nav>
-
-  <main id="top">
-    <section class="hero">
-      <h1 class="visually-hidden">Noema — the intentional memory layer for your AI agents</h1>
-      <img
-        src="/brand/noema-dark.svg"
-        alt="Noema — the intentional memory layer for your AI agents"
-        width="2314"
-        height="522"
-      />
-      <p class="tagline">The intentional memory layer for your AI agents.</p>
-      <p class="pronunciation">(pronounced: <em>no-EE-muh</em>, from Greek <em>noema</em> — the intentional content of a thought)</p>
-      <div class="hero-actions">
+    <nav>
+        <a href="#top" class="nav-wordmark"
+            >Noema<span class="period">.</span></a
+        >
         <a
-          href="https://github.com/Fail-Safe/Noema"
-          class="cta"
-          target="_blank"
-          rel="noopener noreferrer"
-        >View on GitHub</a>
-        <a href="#install" class="cta-text">Get started ↓</a>
-      </div>
-    </section>
+            href="https://github.com/Fail-Safe/Noema"
+            class="github-link"
+            target="_blank"
+            rel="noopener noreferrer">GitHub ↗</a
+        >
+    </nav>
 
-    <div class="content">
-      <section class="prose">
-        <p>
-          Noema gives AI agents — and the humans working alongside them — a persistent, structured
-          place to record what they know, decide, observe, and intend. Every memory is a plain
-          markdown file, indexed by a local SQLite database, exposed to agents through an MCP
-          (Model Context Protocol) server. Nothing lives in the cloud; nothing requires a paid
-          cloud API key.
-        </p>
-      </section>
+    <main id="top">
+        <section class="hero">
+            <h1 class="visually-hidden">
+                Noema — the intentional memory layer for your AI agents
+            </h1>
+            <img
+                src="/brand/noema-dark.svg"
+                alt="Noema — the intentional memory layer for your AI agents"
+                width="2314"
+                height="522"
+            />
+            <p class="tagline">
+                The intentional memory layer for your AI agents.
+            </p>
+            <div class="hero-actions">
+                <a
+                    href="https://github.com/Fail-Safe/Noema"
+                    class="cta"
+                    target="_blank"
+                    rel="noopener noreferrer">View on GitHub</a
+                >
+                <a href="#install" class="cta-text">Get started ↓</a>
+            </div>
+        </section>
 
-      <section class="prose">
-        <h2>Why Noema?</h2>
-        <ul class="why-list">
-          <li>
-            <strong>Federated by design.</strong>
-            Multiple Cortexes can pair into a ring and sync peer-to-peer. Publishers can broadcast read-only knowledge; subscribers can consume without polluting upstream. Grow a shared memory across a team, a lab, or a research network — no central server, no gatekeeper.
-          </li>
-          <li>
-            <strong>Local-first.</strong>
-            No cloud, no API keys, no account required. Your memories live in <code>~/.noema/</code>.
-          </li>
-          <li>
-            <strong>Plain markdown.</strong>
-            Every Trace is a file. You can <code>cat</code>, <code>grep</code>, and <code>git commit</code> it — no proprietary format.
-          </li>
-          <li>
-            <strong>Your editor is a first-class client.</strong>
-            Edit Traces in Obsidian, VS Code, or <code>vim</code>. Drop new markdown files into <code>traces/</code> from Finder. Delete, rename, or drag between folders. A background watcher sees every change and emits a proper mutation event — so your manual edits propagate through federation exactly like MCP-initiated ones, and deletes are recoverable from the event log.
-          </li>
-          <li>
-            <strong>MCP-native.</strong>
-            Works with Claude Code, Copilot, Zed, and any MCP-compatible agent out of the box. Ships a native <a href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener noreferrer">Hermes</a> memory provider plugin — any Hermes agent can use a Cortex as its memory backend.
-          </li>
-          <li>
-            <strong>Plays well with the agent ecosystem.</strong>
-            Every Cortex ships with an auto-generated <code>AGENTS.md</code> — the <a href="https://agents.md/" target="_blank" rel="noopener noreferrer">community-standard agent-instructions format</a> picked up by Codex, Cursor, Aider, Zed, Copilot, and most other coding-agent tooling. Any agent dropped into the directory knows how to work with it, no custom onboarding required.
-          </li>
-          <li>
-            <strong>Integrity built in.</strong>
-            Every Trace is content-hashed on write. Publishers can source-lock authoritative traces so consumers can't accidentally edit them. <code>noema verify</code> catches tampering; <code>noema drift</code> catches divergence from the source.
-          </li>
-          <li>
-            <strong>Security from day one.</strong>
-            Keyed MCP auth that refuses to serve bearer keys over plaintext, explicit host-binding rules, and out-of-band key verification — the security work most projects defer to v2 is in v1.
-          </li>
-        </ul>
-      </section>
+        <div class="content">
+            <section class="prose">
+                <p>
+                    Noema gives AI agents — and the humans working alongside
+                    them — a persistent, structured place to record what they
+                    know, decide, observe, and intend. Every memory is a plain
+                    markdown file, indexed by a local SQLite database, exposed
+                    to agents through an MCP (Model Context Protocol) server.
+                    Nothing lives in the cloud; nothing requires a paid cloud
+                    API key.
+                </p>
+            </section>
 
-      <section class="prose">
-        <h2>Concepts</h2>
-        <table>
-          <thead>
-            <tr><th>Term</th><th>Meaning</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Trace</td>
-              <td>A single memory — one markdown file + its database row</td>
-            </tr>
-            <tr>
-              <td>Cortex</td>
-              <td>A named collection of Traces, stored in a directory you control</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          Every Trace has a type that describes its intent —
-          <code>fact</code>, <code>decision</code>, <code>preference</code>,
-          <code>context</code>, <code>skill</code>, <code>intent</code>,
-          <code>observation</code>, or <code>note</code>.
-        </p>
-      </section>
+            <section class="prose">
+                <h2>Why Noema?</h2>
+                <ul class="why-list">
+                    <li>
+                        <strong>Federated by design.</strong>
+                        Multiple Cortexes can pair into a ring and sync peer-to-peer.
+                        Publishers can broadcast read-only knowledge; subscribers
+                        can consume without polluting upstream. Grow a shared memory
+                        across a team, a lab, or a research network — no central server,
+                        no gatekeeper.
+                    </li>
+                    <li>
+                        <strong>Local-first.</strong>
+                        No cloud, no API keys, no account required. Your memories
+                        live in <code>~/.noema/</code>.
+                    </li>
+                    <li>
+                        <strong>Plain markdown.</strong>
+                        Every Trace is a file. You can <code>cat</code>, <code
+                            >grep</code
+                        >, and <code>git commit</code> it — no proprietary format.
+                    </li>
+                    <li>
+                        <strong>Your editor is a first-class client.</strong>
+                        Edit Traces in an editor of your choice, be it Obsidian, VS
+                        Code, <code>vim</code>, or something else altogether.
+                        Drop new markdown files into <code>traces/</code> from Finder.
+                        Delete, rename, or drag between folders. A background watcher
+                        sees every change and emits a proper sync event — so your
+                        manual edits propagate through federation exactly like MCP-initiated
+                        ones, and deletes are recoverable from the event log.
+                    </li>
+                    <li>
+                        <strong>MCP-native.</strong>
+                        Works with Claude Code, Copilot, Zed, and any MCP-compatible
+                        agent out of the box. Ships a native <a
+                            href="https://hermes-agent.nousresearch.com/"
+                            target="_blank"
+                            rel="noopener noreferrer">Hermes</a
+                        > memory provider plugin — any Hermes agent can use a Cortex
+                        as its memory backend.
+                    </li>
+                    <li>
+                        <strong>Plays well with the agent ecosystem.</strong>
+                        Every Cortex ships with an auto-generated <code
+                            >AGENTS.md</code
+                        > — the <a
+                            href="https://agents.md/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >community-standard agent-instructions format</a
+                        > picked up by Codex, Cursor, Aider, Zed, Copilot, and most
+                        other coding-agent tooling. Any agent dropped into the directory
+                        knows how to work with it, no custom onboarding required.
+                    </li>
+                    <li>
+                        <strong>Integrity built in.</strong>
+                        Every Trace is content-hashed on write. Publishers can source-lock
+                        authoritative traces so consumers can't accidentally edit
+                        them. <code>noema verify</code> catches tampering; <code
+                            >noema drift</code
+                        > catches divergence from the source.
+                    </li>
+                    <li>
+                        <strong>Security from day one.</strong>
+                        Keyed MCP auth that refuses to serve bearer keys over plaintext,
+                        explicit host-binding rules, and out-of-band key verification
+                        — the security work most projects defer to v2 is in v1.
+                    </li>
+                </ul>
+            </section>
 
-      <section class="prose">
-        <h2>Federation</h2>
-        <p>
-          Two or more Cortexes can pair into a ring and sync peer-to-peer. Every Trace,
-          every lineage edge, every audit event replicates across every peer — no central
-          server, no cloud broker.
-        </p>
-        <p>
-          When two peers edit the same Trace concurrently, Noema refuses to overwrite
-          either side. Instead it creates a <code>divergence</code> Trace that preserves
-          both versions verbatim, so you can resolve it deliberately when you're ready.
-          Nothing is ever lost; nothing is ever silently decided for you.
-        </p>
-        <p>
-          Federation supports three modes: <strong>sync</strong> for collaborative rings,
-          <strong>publish</strong> for read-only knowledge broadcast, and
-          <strong>subscribe</strong> for consumption without upstream pollution.
-          Source-locked traces from a publisher are enforced as immutable on the
-          consumer side — the content can't be edited, only archived or resolved
-          through the publisher.
-        </p>
-        <p>
-          A personal cortex becomes a lab cortex becomes a research-network cortex.
-          Memory grows with the collective, on your terms.
-        </p>
-      </section>
+            <section class="prose">
+                <h2>Concepts</h2>
+                <table>
+                    <thead>
+                        <tr><th>Term</th><th>Meaning</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Trace</td>
+                            <td
+                                >A single memory — one markdown file + its
+                                database row</td
+                            >
+                        </tr>
+                        <tr>
+                            <td>Cortex</td>
+                            <td
+                                >A named collection of Traces, stored in a
+                                directory you control</td
+                            >
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    Every Trace has a type that describes its intent —
+                    <code>fact</code>, <code>decision</code>, <code
+                        >preference</code
+                    >,
+                    <code>context</code>, <code>skill</code>, <code>intent</code
+                    >,
+                    <code>observation</code>, or <code>note</code>.
+                </p>
+            </section>
 
-      <section class="prose">
-        <h2>Security</h2>
-        <p>
-          A federated ring of memories is worth defending. Noema's HTTP MCP endpoint
-          supports a <strong>keyed mode</strong> where every request must carry a
-          bearer key — and when keyed mode is active, the server refuses to start
-          without TLS. A bearer token over plaintext is worse than no auth at all;
-          Noema treats that combination as a hard startup error, not a warning.
-        </p>
-        <p>
-          Rings share one key, verifiable via a fingerprint command so every peer
-          knows it's talking to the right ring. Keys live in environment variables
-          or <code>0600</code> sidecar files, never in command-line history.
-        </p>
-        <p>
-          The HTTP transport demands an explicit host — binding to <code>0.0.0.0</code>
-          is rejected outright, so a federation peer can't be accidentally exposed
-          to every interface on the machine. The cortex must be named explicitly
-          too; no silent defaults on a network-facing endpoint.
-        </p>
-        <p>
-          The work many projects push to v2 — auth middleware, host-binding safety,
-          fingerprint verification, divergence-aware conflict resolution — is in v1.
-        </p>
-      </section>
+            <section class="prose">
+                <h2>Federation</h2>
+                <p>
+                    Two or more Cortexes can pair into a ring and sync
+                    peer-to-peer. Every Trace, every lineage edge, every audit
+                    event replicates across every peer — no central server, no
+                    cloud broker.
+                </p>
+                <p>
+                    When two peers edit the same Trace concurrently, Noema
+                    refuses to overwrite either side. Instead it creates a <code
+                        >divergence</code
+                    > Trace that preserves both versions verbatim, so you can resolve
+                    it deliberately when you're ready. Nothing is ever lost; nothing
+                    is ever silently decided for you.
+                </p>
+                <p>
+                    Federation supports three modes: <strong>sync</strong> for collaborative
+                    rings,
+                    <strong>publish</strong> for read-only knowledge broadcast, and
+                    <strong>subscribe</strong> for consumption without upstream pollution.
+                    Source-locked traces from a publisher are enforced as immutable
+                    on the consumer side — the content can't be edited, only archived
+                    or resolved through the publisher.
+                </p>
+                <p>
+                    A personal cortex becomes a lab cortex becomes a
+                    research-network cortex. Memory grows with the collective,
+                    on your terms.
+                </p>
+            </section>
 
-      <section class="prose" id="faq">
-        <h2>Frequently asked</h2>
-        <details class="faq">
-          <summary>What is Noema?</summary>
-          <p>
-            Noema is an open-source, local-first memory layer for AI agents. Every
-            memory is a plain markdown file; the index is a local SQLite database.
-            It exposes a Model Context Protocol (MCP) server so agents like Claude
-            Code, GitHub Copilot, Zed, Cursor, and Aider can use it as a structured
-            memory backend. Multiple Cortexes can pair into a peer-to-peer federation
-            ring.
-          </p>
-        </details>
-        <details class="faq">
-          <summary>Does Noema have a cloud service?</summary>
-          <p>
-            No. Noema runs entirely on your machine or within a federation ring you
-            control. There is no hosted service, no account system, and no telemetry.
-            All memories live on disk in a directory you control.
-          </p>
-        </details>
-        <details class="faq">
-          <summary>How is Noema different from a vector database?</summary>
-          <p>
-            Noema targets structured, typed, auditable agent memory — not semantic
-            retrieval over unstructured text. It uses SQLite FTS5 for keyword and
-            phrase search, classifies every Trace by type (<code>fact</code>,
-            <code>decision</code>, <code>preference</code>, <code>context</code>,
-            <code>skill</code>, <code>intent</code>, <code>observation</code>,
-            <code>note</code>), tracks lineage via <code>derived_from</code> edges,
-            and emits an immutable event log. It is not a replacement for Pinecone,
-            Weaviate, or Chroma.
-          </p>
-        </details>
-        <details class="faq">
-          <summary>What is a Cortex?</summary>
-          <p>
-            A Cortex is a named collection of Traces, stored in a directory you
-            control. Noema is the project; a Cortex is an instance. You can have
-            multiple Cortexes for different contexts, and Cortexes can federate
-            with each other peer-to-peer.
-          </p>
-        </details>
-        <details class="faq">
-          <summary>How do I install Noema?</summary>
-          <p>
-            On macOS and Linux: <code>brew install Fail-Safe/tap/noema</code>.
-            Pre-built binaries are also available on the
-            <a href="https://github.com/Fail-Safe/Noema/releases" target="_blank" rel="noopener noreferrer">GitHub releases page</a>
-            for darwin, linux, and windows on both amd64 and arm64. Or install
-            with the Go toolchain: <code>go install github.com/Fail-Safe/Noema/cmd/noema@latest</code>.
-          </p>
-        </details>
-        <details class="faq">
-          <summary>Can I edit memories in Obsidian or another editor?</summary>
-          <p>
-            Yes. A filesystem watcher runs alongside <code>noema serve</code> and
-            treats external edits as first-class mutation events. You can edit
-            Traces in Obsidian, VS Code, or <code>vim</code>; drop new markdown
-            files into <code>traces/</code> from Finder; move files between
-            <code>traces/</code>, <code>archive/traces/</code>, and
-            <code>trash/traces/</code> — every change emits the same events as
-            MCP-initiated mutations and propagates through federation.
-          </p>
-        </details>
-      </section>
+            <section class="prose">
+                <h2>Security</h2>
+                <p>
+                    A federated ring of memories is worth defending. Noema's
+                    HTTP MCP endpoint supports a <strong>keyed mode</strong> where
+                    every request must carry a bearer key — and when keyed mode is
+                    active, the server refuses to start without TLS. A bearer token
+                    over plaintext is worse than no auth at all; Noema treats that
+                    combination as a hard startup error, not a warning.
+                </p>
+                <p>
+                    Rings share one key, verifiable via a fingerprint command so
+                    every peer knows it's talking to the right ring. Keys live
+                    in environment variables or <code>0600</code> sidecar files, never
+                    in command-line history.
+                </p>
+                <p>
+                    The HTTP transport demands an explicit host — binding to <code
+                        >0.0.0.0</code
+                    >
+                    is rejected outright, so a federation peer can't be accidentally
+                    exposed to every interface on the machine. The cortex must be
+                    named explicitly too; no silent defaults on a network-facing endpoint.
+                </p>
+                <p>
+                    The work many projects push to v2 — auth middleware,
+                    host-binding safety, fingerprint verification,
+                    divergence-aware conflict resolution — is in v1.
+                </p>
+            </section>
 
-      <section class="prose" id="install">
-        <h2>Get started</h2>
-        <p>Install with Homebrew (macOS + Linux):</p>
-        <div class="code-block">
-          <pre><code>brew install Fail-Safe/tap/noema</code></pre>
-          <button
-            class="copy-btn"
-            type="button"
-            data-copy="brew install Fail-Safe/tap/noema"
-            aria-label="Copy install command"
-          >Copy</button>
-        </div>
-        <p>Then create a Cortex and start the MCP server:</p>
-        <pre><code><span class="prompt">$ </span>noema init --name my-cortex
+            <section class="prose" id="faq">
+                <h2>Frequently asked</h2>
+                <details class="faq">
+                    <summary>What is Noema?</summary>
+                    <p>
+                        Noema is an open-source, local-first memory layer for AI
+                        agents. Every memory is a plain markdown file; the index
+                        is a local SQLite database. It exposes a Model Context
+                        Protocol (MCP) server so agents like Claude Code, GitHub
+                        Copilot, Zed, Cursor, and Aider can use it as a
+                        structured memory backend. Multiple Cortexes can pair
+                        into a peer-to-peer federation ring.
+                    </p>
+                </details>
+                <details class="faq">
+                    <summary>How is it pronounced?</summary><p>
+                        It is prounounced <em>no-EE-muh</em> or <em
+                            >NO-ay-muh</em
+                        >, from Greek:<br />
+                        <code
+                            ><b>νόημα</b> — the intentional content of a thought.</code
+                        >
+                    </p>
+                </details>
+                <details class="faq">
+                    <summary>Does Noema have a cloud service?</summary>
+                    <p>
+                        No. Noema runs entirely on your machine or within a
+                        federation ring you control. There is no hosted service,
+                        no account system, and no telemetry. All memories live
+                        on disk in a directory you control.
+                    </p>
+                </details>
+                <details class="faq">
+                    <summary
+                        >How is Noema different from a vector database?</summary
+                    >
+                    <p>
+                        Noema targets structured, typed, auditable agent memory
+                        — not semantic retrieval over unstructured text. It uses
+                        SQLite FTS5 for keyword and phrase search, classifies
+                        every Trace by type (<code>fact</code>,
+                        <code>decision</code>, <code>preference</code>, <code
+                            >context</code
+                        >,
+                        <code>skill</code>, <code>intent</code>, <code
+                            >observation</code
+                        >,
+                        <code>note</code>), tracks lineage via <code
+                            >derived_from</code
+                        > edges, and emits an immutable event log. It is not a replacement
+                        for Pinecone, Weaviate, or Chroma.
+                    </p>
+                </details>
+                <details class="faq">
+                    <summary>What is a Cortex?</summary>
+                    <p>
+                        A Cortex is a named collection of Traces, stored in a
+                        directory you control. Noema is the project; a Cortex is
+                        an instance. You can have multiple Cortexes for
+                        different contexts, and Cortexes can federate with each
+                        other peer-to-peer.
+                    </p>
+                </details>
+                <details class="faq">
+                    <summary>How do I install Noema?</summary>
+                    <p>
+                        On macOS and Linux: <code
+                            >brew install Fail-Safe/tap/noema</code
+                        >. Pre-built binaries are also available on the
+                        <a
+                            href="https://github.com/Fail-Safe/Noema/releases"
+                            target="_blank"
+                            rel="noopener noreferrer">GitHub releases page</a
+                        >
+                        for darwin, linux, and windows on both amd64 and arm64. Or
+                        install with the Go toolchain: <code
+                            >go install
+                            github.com/Fail-Safe/Noema/cmd/noema@latest</code
+                        >.
+                    </p>
+                </details>
+                <details class="faq">
+                    <summary
+                        >Can I edit memories in Obsidian or another editor?</summary
+                    >
+                    <p>
+                        Yes. A filesystem watcher runs alongside <code
+                            >noema serve</code
+                        > and treats external edits as first-class mutation events.
+                        You can edit Traces in Obsidian, VS Code, or <code
+                            >vim</code
+                        >; drop new markdown files into <code>traces/</code> from
+                        Finder; move files between
+                        <code>traces/</code>, <code>archive/traces/</code>, and
+                        <code>trash/traces/</code> — every change emits the same events
+                        as MCP-initiated mutations and propagates through federation.
+                    </p>
+                </details>
+            </section>
+
+            <section class="prose" id="install">
+                <h2>Get started</h2>
+                <p>Install with Homebrew (macOS + Linux):</p>
+                <div class="code-block">
+                    <pre><code>brew install Fail-Safe/tap/noema</code></pre>
+                    <button
+                        class="copy-btn"
+                        type="button"
+                        data-copy="brew install Fail-Safe/tap/noema"
+                        aria-label="Copy install command">Copy</button
+                    >
+                </div>
+                <p>Then create a Cortex and start the MCP server:</p>
+                <pre><code><span class="prompt">$ </span>noema init --name my-cortex
 <span class="prompt">$ </span>noema serve --transport stdio</code></pre>
-        <p>
-          Prefer a pre-built binary, the Go toolchain, or building from source?
-          See the
-          <a href="https://github.com/Fail-Safe/Noema#installation" target="_blank" rel="noopener noreferrer">README — Installation</a>.
-        </p>
-      </section>
-    </div>
-  </main>
+                <p>
+                    Prefer a pre-built binary, the Go toolchain, or building
+                    from source? See the
+                    <a
+                        href="https://github.com/Fail-Safe/Noema#installation"
+                        target="_blank"
+                        rel="noopener noreferrer">README — Installation</a
+                    >.
+                </p>
+            </section>
 
-  <script is:inline>
-    // Vanilla copy-to-clipboard — no dependencies. Buttons with a
-    // data-copy attribute copy their payload to the clipboard and flip
-    // their label to "Copied" for ~1.8s. Silent fallback if the
-    // Clipboard API is unavailable (older browsers, insecure context).
-    document.querySelectorAll('.copy-btn').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const payload = btn.getAttribute('data-copy');
-        if (!payload || !navigator.clipboard) return;
-        try {
-          await navigator.clipboard.writeText(payload);
-          const original = btn.textContent;
-          btn.textContent = 'Copied';
-          btn.classList.add('is-copied');
-          setTimeout(() => {
-            btn.textContent = original;
-            btn.classList.remove('is-copied');
-          }, 1800);
-        } catch (_) {
-          // Clipboard write denied (e.g. permissions) — no-op.
-        }
-      });
-    });
-  </script>
+            <section class="prose" id="agent-setup">
+                <h2>Set up via an AI agent</h2>
+                <p>
+                    Prefer to have your coding agent do the install for you?
+                    Copy the block below and paste it into Claude Code, Cursor,
+                    Copilot, Zed, Aider, or any other MCP-capable agent. If
+                    you're an LLM reading this page directly, follow the same
+                    steps yourself.
+                </p>
 
-  <footer>
-    <a href="https://github.com/Fail-Safe/Noema" target="_blank" rel="noopener noreferrer">GitHub</a>
-    &nbsp;·&nbsp; MIT License
-    &nbsp;·&nbsp; <a href="mailto:contact@noemacortex.com">contact@noemacortex.com</a>
-  </footer>
+                <div class="code-block prompt-block">
+                    <pre><code>Please install Noema as my agent memory backend and configure it for
+this session.
+
+1. Install the `noema` binary.
+   - macOS/Linux with Homebrew (preferred):
+       brew install Fail-Safe/tap/noema
+   - Or with the Go toolchain:
+       go install github.com/Fail-Safe/Noema/cmd/noema@latest
+
+2. Create a Cortex. Pick a short descriptive name based on this
+   project (e.g. "my-project-memory"). Don't include a date in the
+   name; `noema init` prepends today's date automatically.
+       noema init --name &lt;cortex-name&gt;
+
+3. Generate an MCP server configuration snippet and install it into
+   this agent host's MCP config.
+       noema serve --cortex &lt;cortex-name&gt; --print-config --transport stdio
+
+   Merge the `mcpServers.noema` entry from the output into the
+   correct file for the host:
+   - Claude Code: ~/.claude.json or the workspace's .mcp.json
+   - Cursor / Zed / GitHub Copilot: that host's MCP servers setting
+   - Claude Desktop: ~/Library/Application Support/Claude/claude_desktop_config.json (macOS)
+
+4. Reload or restart the agent host so the new MCP server is
+   registered, then call the `get_instructions` MCP tool to verify
+   the connection. That tool returns the Noema agent reference —
+   trace types, frontmatter fields, filtering options, and the full
+   MCP tool list — which you should read before creating traces.
+
+5. When creating traces, always assign a `type` that reflects intent:
+   fact, decision, preference, context, skill, intent, observation, or
+   note. This is load-bearing for future retrieval and lineage.
+
+Reference: https://noemacortex.com/llms.txt
+Source:    https://github.com/Fail-Safe/Noema</code></pre>
+                    <button
+                        class="copy-btn"
+                        type="button"
+                        aria-label="Copy agent prompt">Copy</button
+                    >
+                </div>
+
+                <p class="prose-note">
+                    Already have <code>noema</code> installed? Skip to step 3
+                    — <code>noema serve --print-config</code> prints a
+                    ready-to-paste MCP entry for your host's config file.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <script is:inline>
+        // Vanilla copy-to-clipboard — no dependencies. A button with a
+        // data-copy attribute copies its payload. A button without one
+        // falls back to copying the text content of the nearest <pre>
+        // inside the same .code-block parent — useful for multi-line
+        // blocks where embedding the payload in an attribute gets awkward
+        // (newlines, entity escaping, formatter behavior). Label flips to
+        // "Copied" for ~1.8s. Silent fallback if the Clipboard API is
+        // unavailable (older browsers, insecure context).
+        document.querySelectorAll(".copy-btn").forEach((btn) => {
+            btn.addEventListener("click", async () => {
+                let payload = btn.getAttribute("data-copy");
+                if (!payload) {
+                    const pre = btn.closest(".code-block")?.querySelector("pre");
+                    payload = pre?.textContent ?? "";
+                }
+                if (!payload || !navigator.clipboard) return;
+                try {
+                    await navigator.clipboard.writeText(payload);
+                    const original = btn.textContent;
+                    btn.textContent = "Copied";
+                    btn.classList.add("is-copied");
+                    setTimeout(() => {
+                        btn.textContent = original;
+                        btn.classList.remove("is-copied");
+                    }, 1800);
+                } catch (_) {
+                    // Clipboard write denied (e.g. permissions) — no-op.
+                }
+            });
+        });
+    </script>
+
+    <footer>
+        <a
+            href="https://github.com/Fail-Safe/Noema"
+            target="_blank"
+            rel="noopener noreferrer">GitHub</a
+        >
+        &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; <a
+            href="mailto:contact@noemacortex.com">contact@noemacortex.com</a
+        >
+    </footer>
 </Layout>
