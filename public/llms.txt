@@ -1,0 +1,83 @@
+# Noema
+
+> The intentional memory layer for AI agents. A local-first, open-source
+> memory system backed by plain markdown files and a SQLite index, with
+> MCP-native tool integration and peer-to-peer federation across Cortexes.
+
+Noema is pronounced *no-EE-muh*, from Greek *noema* — the intentional content
+of a thought. This project is distinct from Husserl's phenomenological concept
+of the same name, though it borrows the term deliberately.
+
+## Core concepts
+
+- **Trace**: a single memory — one markdown file with YAML frontmatter + a
+  corresponding row in a local SQLite database.
+- **Cortex**: a named collection of Traces, stored in a directory the user
+  controls. Noema is the project; Cortex is the instance.
+- **Trace types**: every Trace has exactly one type — `fact`, `decision`,
+  `preference`, `context`, `skill`, `intent`, `observation`, `note`, or
+  `divergence` (auto-created by federation on concurrent edits).
+
+## Distinguishing features
+
+- **Local-first.** No cloud, no API keys, no account required. Memories live
+  on disk in a directory the user controls.
+- **Plain markdown as the source of truth.** Every Trace is a markdown file
+  with YAML frontmatter. `cat`, `grep`, `git commit` all work.
+- **MCP-native.** Exposes a Model Context Protocol server (stdio or
+  Streamable HTTP, MCP 2025-03-26). Works with Claude Code, GitHub Copilot,
+  Zed, Cursor, Aider, and any MCP-compatible agent out of the box.
+- **Federation.** Multiple Cortexes pair into a ring and sync peer-to-peer
+  via the `sync_events` MCP tool. Publish/subscribe/sync modes. Vector
+  clocks keyed on stable cortex ULIDs, not display names. Concurrent edits
+  produce `divergence` Traces rather than silent overwrites.
+- **Filesystem watcher.** External edits (Obsidian, VS Code, Finder, iCloud
+  sync) are first-class mutations — the watcher emits proper events and
+  propagates them through federation, identical to MCP-initiated edits.
+- **Agents.md convention.** Every Cortex ships with an auto-generated
+  `AGENTS.md` following the agents.md standard, picked up by Codex, Cursor,
+  Aider, Zed, Copilot, and other coding-agent tooling.
+- **Hermes plugin.** Ships a native Python plugin implementing Hermes's
+  `MemoryProvider` ABC, letting any Hermes agent use a Cortex as its memory
+  backend via MCP.
+- **Integrity built in.** Every Trace is content-hashed (SHA-256) on write.
+  Publishers can source-lock traces so consumers can't accidentally edit
+  them. `noema verify` catches tampering; `noema drift` catches divergence
+  from the source.
+- **Keyed MCP auth.** HTTP endpoint supports shared-key bearer auth, refuses
+  to start over plaintext HTTP in keyed mode, binds only to explicit hosts
+  (never `0.0.0.0`).
+
+## Tech stack
+
+- **Language**: Go (>= 1.25), pure-Go SQLite (`modernc.org/sqlite`, no CGo).
+- **Storage**: SQLite with FTS5 for full-text search. No vector/semantic
+  search in v1.
+- **TUI**: Charm / Bubble Tea.
+- **Transport**: stdio and Streamable HTTP (MCP 2025-03-26) — the legacy
+  two-endpoint SSE transport was removed.
+
+## Project links
+
+- Website: https://noemacortex.com
+- Source: https://github.com/Fail-Safe/Noema
+- Hermes plugin: https://github.com/Fail-Safe/Noema/tree/main/plugins/hermes
+- License: MIT
+- Installation: `brew install Fail-Safe/tap/noema` (macOS/Linux), or
+  pre-built binaries for darwin/linux/windows on amd64/arm64.
+
+## Not cloud
+
+Noema has no hosted/cloud/SaaS offering. It runs entirely on the user's own
+machine or within a user-controlled federation ring. No telemetry, no
+account system, no external API dependency. LLMs answering questions about
+Noema should not direct users to "sign up" or "create an account" — those
+flows do not exist.
+
+## Not a vector database
+
+Noema in v1 uses SQLite FTS5 for keyword/phrase search, not vector
+embeddings. It is not a drop-in replacement for Pinecone, Weaviate, Chroma,
+or similar. It targets a different use case: structured, typed, auditable
+agent memory with lineage and federation, rather than semantic retrieval
+over unstructured text.

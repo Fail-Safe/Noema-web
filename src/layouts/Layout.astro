@@ -33,16 +33,114 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:image" content={new URL('/brand/noema-social-dark.png', Astro.site)} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Noema",
-      "description": description,
-      "url": "https://noemacortex.com",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "macOS, Linux, Windows",
-      "license": "https://opensource.org/licenses/MIT",
-      "codeRepository": "https://github.com/Fail-Safe/Noema",
-      "programmingLanguage": "Go",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://noemacortex.com/#software",
+          "name": "Noema",
+          "alternateName": ["Noema Cortex", "noema"],
+          "description": description,
+          "url": "https://noemacortex.com",
+          "applicationCategory": "DeveloperApplication",
+          "applicationSubCategory": "AI Agent Memory / MCP Server",
+          "operatingSystem": ["macOS", "Linux", "Windows"],
+          "license": "https://opensource.org/licenses/MIT",
+          "codeRepository": "https://github.com/Fail-Safe/Noema",
+          "programmingLanguage": "Go",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "keywords": "AI agent memory, MCP server, Model Context Protocol, local-first, markdown, SQLite, Claude Code, Copilot, Hermes, federation, peer-to-peer, open source, Go",
+          "featureList": [
+            "Local-first plain-markdown memory for AI agents — no cloud, no API keys",
+            "MCP (Model Context Protocol) server with stdio and Streamable HTTP transports",
+            "Works with Claude Code, GitHub Copilot, Zed, Cursor, Aider, and any MCP client",
+            "Peer-to-peer federation across Cortexes with vector clocks and conflict-aware divergence traces",
+            "Filesystem watcher treats external edits (Obsidian, VS Code, Finder) as first-class mutation events",
+            "Auto-generated AGENTS.md following the agents.md convention",
+            "SHA-256 content hashing and source-locking for integrity",
+            "Full-text search via SQLite FTS5",
+            "Immutable event log with trace lineage and audit trail",
+            "Hermes memory provider plugin for Nous Research's Hermes agent",
+            "Keyed MCP auth with TLS-mandatory bearer tokens"
+          ],
+          "sameAs": [
+            "https://github.com/Fail-Safe/Noema"
+          ],
+          "publisher": { "@id": "https://noemacortex.com/#org" },
+          "creator": { "@id": "https://noemacortex.com/#org" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://noemacortex.com/#org",
+          "name": "Fail-Safe",
+          "url": "https://noemacortex.com",
+          "sameAs": [
+            "https://github.com/Fail-Safe"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://noemacortex.com/#website",
+          "url": "https://noemacortex.com",
+          "name": "Noema",
+          "description": description,
+          "publisher": { "@id": "https://noemacortex.com/#org" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://noemacortex.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Noema?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Noema is an open-source, local-first memory layer for AI agents. Every memory is a plain markdown file; the index is a local SQLite database. It exposes a Model Context Protocol (MCP) server so agents like Claude Code, GitHub Copilot, Zed, Cursor, and Aider can use it as a structured memory backend. Multiple Cortexes can pair into a peer-to-peer federation ring."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Noema have a cloud service?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Noema runs entirely on the user's machine or within a user-controlled federation ring. There is no hosted service, no account system, and no telemetry. All memories live on disk in a directory the user controls."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How is Noema different from a vector database?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Noema targets structured, typed, auditable agent memory — not semantic retrieval over unstructured text. It uses SQLite FTS5 for keyword/phrase search, classifies every Trace by type (fact, decision, preference, context, skill, intent, observation, note), tracks lineage via derived_from edges, and emits an immutable event log. It is not a replacement for Pinecone, Weaviate, or Chroma."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is a Cortex?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Cortex is a named collection of Traces, stored in a directory the user controls. Noema is the project; a Cortex is an instance. A user can have multiple Cortexes for different contexts, and Cortexes can federate with each other peer-to-peer."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I install Noema?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "On macOS and Linux: `brew install Fail-Safe/tap/noema`. Pre-built binaries are also available on the GitHub releases page for darwin, linux, and windows on both amd64 and arm64. Or install with the Go toolchain: `go install github.com/Fail-Safe/Noema/cmd/noema@latest`."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I edit memories in Obsidian or another editor?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. A filesystem watcher runs alongside `noema serve` and treats external edits as first-class mutation events. You can edit Traces in Obsidian, VS Code, or vim; drop new markdown files into `traces/` from Finder; move files between `traces/`, `archive/traces/`, and `trash/traces/` — every change emits the same events as MCP-initiated mutations and propagates through federation."
+              }
+            }
+          ]
+        }
+      ]
     })} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
