@@ -54,8 +54,16 @@ import Layout from '../layouts/Layout.astro';
             Every Trace is a file. You can <code>cat</code>, <code>grep</code>, and <code>git commit</code> it — no proprietary format.
           </li>
           <li>
+            <strong>Your editor is a first-class client.</strong>
+            Edit Traces in Obsidian, VS Code, or <code>vim</code>. Drop new markdown files into <code>traces/</code> from Finder. Delete, rename, or drag between folders. A background watcher sees every change and emits a proper mutation event — so your manual edits propagate through federation exactly like MCP-initiated ones, and deletes are recoverable from the event log.
+          </li>
+          <li>
             <strong>MCP-native.</strong>
             Works with Claude Code, Copilot, Zed, and any MCP-compatible agent out of the box. Ships a native <a href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener noreferrer">Hermes</a> memory provider plugin — any Hermes agent can use a Cortex as its memory backend.
+          </li>
+          <li>
+            <strong>Plays well with the agent ecosystem.</strong>
+            Every Cortex ships with an auto-generated <code>AGENTS.md</code> — the <a href="https://agents.md/" target="_blank" rel="noopener noreferrer">community-standard agent-instructions format</a> picked up by Codex, Cursor, Aider, Zed, Copilot, and most other coding-agent tooling. Any agent dropped into the directory knows how to work with it, no custom onboarding required.
           </li>
           <li>
             <strong>Integrity built in.</strong>
