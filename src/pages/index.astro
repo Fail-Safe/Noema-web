@@ -8,7 +8,7 @@ import Layout from "../layouts/Layout.astro";
 // database", "markdown + SQLite". Stays under 160 chars for Google's
 // snippet display.
 const metaDescription =
-    "Local-first agent memory as an MCP server. Markdown + SQLite, no cloud, no vector DB. Works with Claude Code, Copilot, Zed, Cursor, Aider, Hermes.";
+    "Local-first agent memory as an MCP server. Markdown + SQLite, no cloud, no external vector DB. Works with Claude Code, Copilot, Zed, Cursor, Aider, Hermes.";
 ---
 
 <Layout description={metaDescription}>
@@ -126,7 +126,7 @@ const metaDescription =
                         Every Trace is content-hashed on write. Publishers can source-lock
                         authoritative traces so consumers can't accidentally edit
                         them. <code>noema verify</code> catches tampering; <code
-                            >noema drift</code
+                            >noema verify drift</code
                         > catches divergence from the source.
                     </li>
                     <li>
@@ -273,10 +273,11 @@ const metaDescription =
                         >How is Noema different from a vector database?</summary
                     >
                     <p>
-                        Noema targets structured, typed, auditable agent memory
-                        — not semantic retrieval over unstructured text. It uses
-                        SQLite FTS5 for keyword and phrase search, classifies
-                        every Trace by type (<code>fact</code>,
+                        Noema targets structured, typed, auditable agent memory,
+                        not a hosted vector store over arbitrary documents. It
+                        uses SQLite FTS5 for keyword and phrase search, can add
+                        opt-in local semantic/hybrid ranking with embeddings stored
+                        in SQLite, classifies every Trace by type (<code>fact</code>,
                         <code>decision</code>, <code>preference</code>, <code
                             >context</code
                         >,

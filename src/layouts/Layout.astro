@@ -67,7 +67,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             "Filesystem watcher treats external edits (Obsidian, VS Code, Finder) as first-class mutation events",
             "Auto-generated AGENTS.md following the agents.md convention",
             "SHA-256 content hashing and source-locking for integrity",
-            "Full-text search via SQLite FTS5",
+            "Full-text search via SQLite FTS5 plus opt-in local semantic and hybrid ranking",
             "Immutable event log with trace lineage and audit trail",
             "Hermes memory provider plugin for Nous Research's Hermes agent",
             "Keyed MCP auth with TLS-mandatory bearer tokens"
@@ -170,7 +170,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               "name": "How is Noema different from a vector database?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Noema targets structured, typed, auditable agent memory — not semantic retrieval over unstructured text. It uses SQLite FTS5 for keyword/phrase search, classifies every Trace by type (fact, decision, preference, context, skill, intent, observation, note), tracks lineage via derived_from edges, and emits an immutable event log. It is not a replacement for Pinecone, Weaviate, or Chroma."
+                "text": "Noema targets structured, typed, auditable agent memory, not a hosted vector store over arbitrary documents. It uses SQLite FTS5 for keyword/phrase search, can add opt-in local semantic and hybrid ranking with embeddings stored in SQLite, classifies every Trace by type (fact, decision, preference, context, skill, intent, observation, note), tracks lineage via derived_from edges, and emits an immutable event log. It is not a replacement for Pinecone, Weaviate, or Chroma."
               }
             },
             {
