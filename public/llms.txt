@@ -47,6 +47,11 @@ of the same name, though it borrows the term deliberately.
 - **Keyed MCP auth.** HTTP endpoint supports shared-key bearer auth, refuses
   to start over plaintext HTTP in keyed mode, binds only to explicit hosts
   (never `0.0.0.0`).
+- **Federation event signing (opt-in).** Each Cortex can hold an Ed25519 key
+  (`noema keygen`) and sign every event it emits; peers pin its public key on
+  first contact. Incoming verification is staged via `federation.verify`
+  (`off`/`warn`/`enforce`) so a shared-key ring no longer has to trust every
+  key-holder to author events as any Cortex.
 
 ## Tech stack
 

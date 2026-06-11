@@ -127,7 +127,11 @@ const metaDescription =
                         authoritative traces so consumers can't accidentally edit
                         them. <code>noema verify</code> catches tampering; <code
                             >noema verify drift</code
-                        > catches divergence from the source.
+                        > catches divergence from the source. For federations that
+                        need it, optional per-cortex Ed25519 event signing
+                        authenticates <em>which</em> Cortex wrote each event, so a
+                        shared-key ring no longer has to trust every key-holder to
+                        author events as anyone.
                     </li>
                     <li>
                         <strong>Security from day one.</strong>
@@ -219,6 +223,17 @@ const metaDescription =
                     every peer knows it's talking to the right ring. Keys live
                     in environment variables or <code>0600</code> sidecar files, never
                     in command-line history.
+                </p>
+                <p>
+                    A shared key proves a peer belongs to the ring, but not which
+                    Cortex wrote a given event. For rings that need that guarantee,
+                    each Cortex can hold its own <strong>Ed25519 signing key</strong>
+                    and sign every event it emits; peers pin a Cortex's public key on
+                    first contact and can be set to reject events that aren't
+                    correctly signed by their owning Cortex. Verification is opt-in
+                    and staged — <code>off</code>, <code>warn</code>, or
+                    <code>enforce</code> — so a mixed-version ring never hard-partitions
+                    while it rolls out.
                 </p>
                 <p>
                     The HTTP transport demands an explicit host — binding to <code
