@@ -357,7 +357,7 @@ pre code {
    to be pasted into a conversation," visually distinct from the shell
    examples above it. Wraps long sentences so the prompt fits the column
    on any viewport, but does NOT break inside individual words — URLs,
-   commands, and multi-word tokens like `Fail-Safe/Noema/cmd/noema@latest`
+   commands, and multi-word tokens like `Fail-Safe/tap/noema`
    stay whole. Long tokens that genuinely exceed the container cause a
    horizontal scroll rather than a mid-token break. */
 .prompt-block pre {

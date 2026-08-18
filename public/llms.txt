@@ -55,11 +55,11 @@ of the same name, though it borrows the term deliberately.
 
 ## Tech stack
 
-- **Language**: Go (>= 1.25), pure-Go SQLite (`modernc.org/sqlite`, no CGo).
+- **Language**: Rust (>= 1.88), with bundled SQLite via `rusqlite`.
 - **Storage**: SQLite with FTS5 for full-text search plus opt-in local
   semantic/hybrid ranking. Embeddings are stored as a SQLite BLOB index and
-  cosine similarity is computed in Go — no external vector database.
-- **TUI**: Charm / Bubble Tea.
+  cosine similarity is computed in-process — no external vector database.
+- **TUI**: Ratatui + Crossterm.
 - **Transport**: stdio and Streamable HTTP (MCP 2025-03-26) — the legacy
   two-endpoint SSE transport was removed.
 
@@ -70,6 +70,7 @@ of the same name, though it borrows the term deliberately.
   install + MCP-host configuration instructions written for coding agents
   (Claude Code, Cursor, Copilot, Zed, Aider, etc.) to follow directly
 - Source: https://github.com/Fail-Safe/Noema
+- Why Rust: https://github.com/Fail-Safe/Noema/blob/main/docs/why-rust.md
 - Hermes plugin: https://github.com/Fail-Safe/Noema/tree/main/plugins/hermes
 - License: MIT
 - Installation: `brew install Fail-Safe/tap/noema` (macOS/Linux), or
@@ -80,8 +81,9 @@ of the same name, though it borrows the term deliberately.
 If you are an AI agent asked to install Noema, follow these five steps:
 
 1. Install the binary — `brew install Fail-Safe/tap/noema` on macOS/Linux,
-   or `go install github.com/Fail-Safe/Noema/cmd/noema@latest` with the Go
-   toolchain.
+   or download the pre-built binary for the current OS and architecture from
+   https://github.com/Fail-Safe/Noema/releases. Building from source requires
+   Rust 1.88 or newer.
 2. Create a Cortex — `noema init --name <cortex-name>`. Pick a short
    descriptive name; do not include a date (the tool prepends it).
 3. Get the MCP config — `noema serve --cortex <cortex-name> --print-config

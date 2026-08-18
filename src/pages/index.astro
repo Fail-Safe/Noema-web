@@ -134,6 +134,19 @@ const metaDescription =
                         author events as anyone.
                     </li>
                     <li>
+                        <strong>One lean Rust binary.</strong>
+                        Noema ships as a single cross-platform executable for macOS,
+                        Linux, and Windows. The production rewrite was qualified
+                        against the former Go implementation for behavior, recovery,
+                        throughput, and memory use; read the <a
+                            href="https://github.com/Fail-Safe/Noema/blob/main/docs/why-rust.md"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Why Noema switched to Rust"
+                            >benchmarked cutover rationale</a
+                        >.
+                    </li>
+                    <li>
                         <strong>Security from day one.</strong>
                         Keyed MCP auth that refuses to serve bearer keys over plaintext,
                         explicit host-binding rules, and out-of-band key verification
@@ -326,11 +339,8 @@ const metaDescription =
                             rel="noopener noreferrer"
                             aria-label="Noema GitHub releases page">GitHub releases page</a
                         > for darwin, linux, and windows on both amd64 and arm64.
-                        Or install with the Go toolchain:
-                        <code
-                            >go install
-                            github.com/Fail-Safe/Noema/cmd/noema@latest</code
-                        >.
+                        Building from source requires Rust 1.88 or newer; see the
+                        repository's installation guide for the current commands.
                     </p>
                 </details>
                 <details class="faq">
@@ -368,7 +378,7 @@ const metaDescription =
                 <pre><code><span class="prompt">$ </span>noema init --name my-cortex
 <span class="prompt">$ </span>noema serve --transport stdio</code></pre>
                 <p>
-                    Prefer a pre-built binary, the Go toolchain, or building
+                    Prefer a pre-built binary or building
                     from source? See the <a
                         href="https://github.com/Fail-Safe/Noema#installation"
                         target="_blank"
@@ -391,7 +401,7 @@ const metaDescription =
                 <div class="code-block prompt-block">
                     <pre><code>Please install Noema as my agent memory backend and configure it for this session.
 
-1. Install the `noema` binary. On macOS/Linux prefer Homebrew (`brew install Fail-Safe/tap/noema`); otherwise use the Go toolchain (`go install github.com/Fail-Safe/Noema/cmd/noema@latest`).
+1. Install the `noema` binary. On macOS/Linux prefer Homebrew (`brew install Fail-Safe/tap/noema`); otherwise download the pre-built binary for this OS and architecture from the GitHub releases page. Building from source requires Rust 1.88 or newer.
 
 2. Create a Cortex. Pick a short descriptive name based on this project (e.g. "my-project-memory"). Don't include a date in the name; `noema init` prepends today's date automatically.
 
@@ -466,6 +476,13 @@ Source:    https://github.com/Fail-Safe/Noema</code></pre>
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Noema on GitHub">GitHub</a
+        >
+        &nbsp;·&nbsp;
+        <a
+            href="https://github.com/Fail-Safe/Noema/blob/main/docs/why-rust.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Why Noema switched to Rust">Why Rust?</a
         >
         &nbsp;·&nbsp; MIT License &nbsp;·&nbsp;
         <a
