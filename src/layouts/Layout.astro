@@ -56,9 +56,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           "operatingSystem": ["macOS", "Linux", "Windows"],
           "license": "https://opensource.org/licenses/MIT",
           "codeRepository": "https://github.com/Fail-Safe/Noema",
-          "programmingLanguage": "Go",
+          "programmingLanguage": "Rust",
           "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-          "keywords": "AI agent memory, MCP server, Model Context Protocol, local-first, markdown, SQLite, Claude Code, Copilot, Hermes, federation, peer-to-peer, open source, Go",
+          "keywords": "AI agent memory, MCP server, Model Context Protocol, local-first, markdown, SQLite, Claude Code, Copilot, Hermes, federation, peer-to-peer, open source, Rust",
           "featureList": [
             "Local-first plain-markdown memory for AI agents — no cloud, no API keys",
             "MCP (Model Context Protocol) server with stdio and Streamable HTTP transports",
@@ -108,14 +108,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           ],
           "tool": [
             { "@type": "HowToTool", "name": "Homebrew (preferred on macOS/Linux)" },
-            { "@type": "HowToTool", "name": "Go toolchain (fallback)" }
+            { "@type": "HowToTool", "name": "Rust 1.88+ toolchain (source builds)" }
           ],
           "step": [
             {
               "@type": "HowToStep",
               "position": 1,
               "name": "Install the noema binary",
-              "text": "On macOS or Linux with Homebrew: `brew install Fail-Safe/tap/noema`. Alternatively with the Go toolchain: `go install github.com/Fail-Safe/Noema/cmd/noema@latest`. Pre-built binaries for darwin/linux/windows on amd64/arm64 are also available on the GitHub releases page.",
+              "text": "On macOS or Linux with Homebrew: `brew install Fail-Safe/tap/noema`. Pre-built binaries for darwin/linux/windows on amd64/arm64 are available on the GitHub releases page. Building from source requires Rust 1.88 or newer.",
               "url": "https://noemacortex.com/#install"
             },
             {
@@ -186,7 +186,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               "name": "How do I install Noema?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "On macOS and Linux: `brew install Fail-Safe/tap/noema`. Pre-built binaries are also available on the GitHub releases page for darwin, linux, and windows on both amd64 and arm64. Or install with the Go toolchain: `go install github.com/Fail-Safe/Noema/cmd/noema@latest`."
+                "text": "On macOS and Linux: `brew install Fail-Safe/tap/noema`. Pre-built binaries are also available on the GitHub releases page for darwin, linux, and windows on both amd64 and arm64. Building from source requires Rust 1.88 or newer."
               }
             },
             {
