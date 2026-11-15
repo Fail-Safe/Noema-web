@@ -29,6 +29,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM-readable summary (llms.txt)" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
@@ -154,7 +155,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               "name": "What is Noema?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Noema is an open-source, local-first memory layer for AI agents. Every memory is a plain markdown file; the index is a local SQLite database. It exposes a Model Context Protocol (MCP) server so agents like Claude Code, GitHub Copilot, Zed, Cursor, and Aider can use it as a structured memory backend. Multiple Cortexes can pair into a peer-to-peer federation ring."
+                "text": "Noema is an open-source, local-first memory layer for AI agents. Every memory is a plain markdown file; the index is a local SQLite database. It exposes a Model Context Protocol (MCP) server so agents like Claude Code, GitHub Copilot, Zed, Cursor, and Aider can use it as a structured memory backend. Multiple Cortexes can form a peer-to-peer mesh."
               }
             },
             {
@@ -162,7 +163,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               "name": "Does Noema have a cloud service?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. Noema runs entirely on the user's machine or within a user-controlled federation ring. There is no hosted service, no account system, and no telemetry. All memories live on disk in a directory the user controls."
+                "text": "No. Noema runs entirely on the user's machine or within a user-controlled federation. There is no hosted service, no account system, and no telemetry. All memories live on disk in a directory the user controls."
               }
             },
             {

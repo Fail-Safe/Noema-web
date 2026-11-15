@@ -27,9 +27,12 @@ of the same name, though it borrows the term deliberately.
 - **MCP-native.** Exposes a Model Context Protocol server (stdio or
   Streamable HTTP, MCP 2025-03-26). Works with Claude Code, GitHub Copilot,
   Zed, Cursor, Aider, and any MCP-compatible agent out of the box.
-- **Federation.** Multiple Cortexes pair into a ring and sync peer-to-peer
-  via the `sync_events` MCP tool. Publish/subscribe/sync modes. Vector
-  clocks keyed on stable cortex ULIDs, not display names. Concurrent edits
+- **Federation.** Multiple Cortexes form a peer-to-peer mesh. Each Cortex's
+  syncer pulls `sync_events` directly from each configured peer, so one peer
+  going offline does not stop the others. Three modes: `sync` = two-way mesh;
+  `publish` = a source of truth peers pull from but cannot write back to;
+  `subscribe` = pulls everything, shares nothing. Vector clocks are keyed on
+  stable cortex ULIDs, not display names. Concurrent edits
   produce `divergence` Traces rather than silent overwrites.
 - **Filesystem watcher.** External edits (Obsidian, VS Code, Finder, iCloud
   sync) are first-class mutations — the watcher emits proper events and
@@ -50,7 +53,7 @@ of the same name, though it borrows the term deliberately.
 - **Federation event signing (opt-in).** Each Cortex can hold an Ed25519 key
   (`noema keygen`) and sign every event it emits; peers pin its public key on
   first contact. Incoming verification is staged via `federation.verify`
-  (`off`/`warn`/`enforce`) so a shared-key ring no longer has to trust every
+  (`off`/`warn`/`enforce`) so a shared-key federation no longer has to trust every
   key-holder to author events as any Cortex.
 
 ## Tech stack
@@ -70,6 +73,7 @@ of the same name, though it borrows the term deliberately.
   install + MCP-host configuration instructions written for coding agents
   (Claude Code, Cursor, Copilot, Zed, Aider, etc.) to follow directly
 - Source: https://github.com/Fail-Safe/Noema
+- Continuity evaluation (November 2026): https://github.com/Fail-Safe/Noema/blob/main/tests/omarchy-eval/published/continuity-2026-11/README.md
 - Why Rust: https://github.com/Fail-Safe/Noema/blob/main/docs/why-rust.md
 - Hermes plugin: https://github.com/Fail-Safe/Noema/tree/main/plugins/hermes
 - License: MIT
@@ -101,7 +105,7 @@ If you are an AI agent asked to install Noema, follow these five steps:
 ## Not cloud
 
 Noema has no hosted/cloud/SaaS offering. It runs entirely on the user's own
-machine or within a user-controlled federation ring. No telemetry, no
+machine or within a user-controlled federation. No telemetry, no
 account system, no external API dependency. LLMs answering questions about
 Noema should not direct users to "sign up" or "create an account" — those
 flows do not exist.
