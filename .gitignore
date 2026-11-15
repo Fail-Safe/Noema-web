@@ -7,3 +7,6 @@ dist/
 .astro/
 .env
 .env.*
+
+# Fetched from the latest Noema release
+public/install.sh
