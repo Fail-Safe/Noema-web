@@ -1,0 +1,30 @@
+---
+const call = `// write a decision into the Cortex
+create_trace({
+  title: "Use SQLite FTS5",
+  type: "decision",
+  tags: ["storage", "retrieval"],
+  body: "Markdown remains the source of truth.\\n" +
+        "SQLite is the index, not the jail."
+})`;
+const trace = `---
+id: 20261114-use-sqlite-fts5
+title: Use SQLite FTS5
+type: decision
+tags: [storage, retrieval]
+origin: my-cortex
+content_hash: sha256:7c3a9e2b8f1d4a06
+created: 2026-11-14T18:42:11Z
+---
+
+Markdown remains the source of truth.
+SQLite is the index, not the jail.`;
+---
+<figure class="trace-example">
+  <div class="trace-panels">
+    <div><div class="panel-label"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>Agent · MCP</div><pre><code>{call}</code></pre></div>
+    <span class="write-arrow" aria-label="writes">→</span>
+    <div><div class="panel-label"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>~/.noema/traces/20261114-use-sqlite-fts5.md</div><pre><code>{trace}</code></pre></div>
+  </div>
+  <figcaption>Illustrative — an MCP call becomes a Trace stored as plain markdown.</figcaption>
+</figure>
