@@ -108,7 +108,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             { "@type": "HowToSupply", "name": "macOS, Linux, or Windows on amd64 or arm64" }
           ],
           "tool": [
-            { "@type": "HowToTool", "name": "Homebrew (preferred on macOS/Linux)" },
+            { "@type": "HowToTool", "name": "Homebrew (alternative on macOS/Linux)" },
             { "@type": "HowToTool", "name": "Rust 1.88+ toolchain (source builds)" }
           ],
           "step": [
@@ -116,7 +116,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               "@type": "HowToStep",
               "position": 1,
               "name": "Install the noema binary",
-              "text": "On macOS or Linux with Homebrew: `brew install Fail-Safe/tap/noema`. Pre-built binaries for darwin/linux/windows on amd64/arm64 are available on the GitHub releases page. Building from source requires Rust 1.88 or newer.",
+              "text": "On Linux or macOS: `curl -fsSL https://noemacortex.com/install.sh | sh`. Alternatively, use Homebrew: `brew install Fail-Safe/tap/noema`. Pre-built binaries for darwin/linux/windows on amd64/arm64 are available on the GitHub releases page. Building from source requires Rust 1.88 or newer.",
               "url": "https://noemacortex.com/#install"
             },
             {

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "fetch-install-script": "sh scripts/fetch-install-script.sh"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",

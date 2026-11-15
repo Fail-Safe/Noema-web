@@ -47,3 +47,8 @@ Noema's anti-slick positioning and the brand rules maintained in
 - Keep public-facing copy free of private hostnames, internal agent or cortex
   names, and personal identifiers unless explicitly approved.
 - Run `npm run build` before handing off web code or content changes.
+
+The installer `public/install.sh` is fetched from the latest Noema release and
+verified against its `checksums.txt` at deploy time. Do not commit it. For local
+development, run `npm run fetch-install-script` to use the same fetch process.
+Older releases without the asset produce a warning and allow builds to continue.

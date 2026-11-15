@@ -260,7 +260,17 @@ const metaDescription =
             <section class="prose evaluation"><a class="evaluation-card" href="https://github.com/Fail-Safe/Noema/blob/main/tests/omarchy-eval/published/continuity-2026-11/README.md"><div><span class="eyebrow">Continuity evaluation</span><h2>Continuity, November 2026</h2></div><span>Read the evaluation ↗</span></a></section>
             <section class="prose" id="install">
                 <h2>Get started</h2>
-                <p>Install with Homebrew (macOS + Linux):</p>
+                <p>Install with the script (Linux + macOS):</p>
+                <div class="code-block">
+                    <pre><code>curl -fsSL https://noemacortex.com/install.sh | sh</code></pre>
+                    <button
+                        class="copy-btn" aria-live="polite"
+                        type="button"
+                        data-copy="curl -fsSL https://noemacortex.com/install.sh | sh"
+                        aria-label="Copy script install command">Copy</button
+                    >
+                </div>
+                <p>Or with Homebrew:</p>
                 <div class="code-block">
                     <pre><code>brew install Fail-Safe/tap/noema</code></pre>
                     <button
@@ -286,9 +296,7 @@ const metaDescription =
                 <p>
                     Prefer to have your coding agent do the install for you?
                     Copy the block below and paste it into Claude Code, Cursor,
-                    Copilot, Zed, Aider, or any other MCP-capable agent. If
-                    you're an LLM reading this page directly, follow the same
-                    steps yourself.
+                    Copilot, Zed, Aider, or any other MCP-capable agent.
                 </p>
 
                 <div class="code-block prompt-block">

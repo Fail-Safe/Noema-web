@@ -77,15 +77,17 @@ of the same name, though it borrows the term deliberately.
 - Why Rust: https://github.com/Fail-Safe/Noema/blob/main/docs/why-rust.md
 - Hermes plugin: https://github.com/Fail-Safe/Noema/tree/main/plugins/hermes
 - License: MIT
-- Installation: `brew install Fail-Safe/tap/noema` (macOS/Linux), or
+- Installation (Linux + macOS): `curl -fsSL https://noemacortex.com/install.sh | sh`.
+  Alternatively, use Homebrew: `brew install Fail-Safe/tap/noema`, or
   pre-built binaries for darwin/linux/windows on amd64/arm64.
 
 ## Agent setup (condensed)
 
 If you are an AI agent asked to install Noema, follow these five steps:
 
-1. Install the binary — `brew install Fail-Safe/tap/noema` on macOS/Linux,
-   or download the pre-built binary for the current OS and architecture from
+1. Install the binary — `curl -fsSL https://noemacortex.com/install.sh | sh`
+   on Linux/macOS, or use Homebrew: `brew install Fail-Safe/tap/noema`.
+   Alternatively, download the pre-built binary for the current OS and architecture from
    https://github.com/Fail-Safe/Noema/releases. Building from source requires
    Rust 1.88 or newer.
 2. Create a Cortex — `noema init --name <cortex-name>`. Pick a short
